@@ -1,19 +1,12 @@
+import 'controller/selectfacilityactivity_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:shashankgowdasp_s_application6/core/app_export.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_elevated_button.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
-class SelectfacilityactivityScreen extends StatelessWidget {
-  SelectfacilityactivityScreen({Key? key}) : super(key: key);
-
-  TextEditingController selectdistrictController = TextEditingController();
-
-  TextEditingController selectblockoneController = TextEditingController();
-
-  TextEditingController selectpanchayatController = TextEditingController();
-
-  TextEditingController selectvillageController = TextEditingController();
+class SelectfacilityactivityScreen
+    extends GetWidget<SelectfacilityactivityController> {
+  const SelectfacilityactivityScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +20,14 @@ class SelectfacilityactivityScreen extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Facility",
+                      Text("lbl_facility".tr,
                           style: CustomTextStyles.headlineSmallPrimary),
                       SizedBox(height: 17.v),
-                      Text("District", style: theme.textTheme.bodyLarge),
+                      Text("lbl_district".tr, style: theme.textTheme.bodyLarge),
                       SizedBox(height: 2.v),
                       CustomTextFormField(
-                          controller: selectdistrictController,
-                          hintText: "Select District",
+                          controller: controller.selectdistrictController,
+                          hintText: "lbl_select_district".tr,
                           suffix: Container(
                               margin:
                                   EdgeInsets.fromLTRB(30.h, 12.v, 12.h, 12.v),
@@ -42,11 +35,11 @@ class SelectfacilityactivityScreen extends StatelessWidget {
                                   svgPath: ImageConstant.imgArrowdropdown)),
                           suffixConstraints: BoxConstraints(maxHeight: 48.v)),
                       SizedBox(height: 24.v),
-                      Text("Block", style: theme.textTheme.bodyLarge),
+                      Text("lbl_block".tr, style: theme.textTheme.bodyLarge),
                       SizedBox(height: 3.v),
                       CustomTextFormField(
-                          controller: selectblockoneController,
-                          hintText: "Select Block",
+                          controller: controller.selectblockoneController,
+                          hintText: "lbl_select_block".tr,
                           suffix: Container(
                               margin:
                                   EdgeInsets.fromLTRB(30.h, 12.v, 12.h, 12.v),
@@ -54,11 +47,12 @@ class SelectfacilityactivityScreen extends StatelessWidget {
                                   svgPath: ImageConstant.imgArrowdropdown)),
                           suffixConstraints: BoxConstraints(maxHeight: 48.v)),
                       SizedBox(height: 26.v),
-                      Text("Panchayath", style: theme.textTheme.bodyLarge),
+                      Text("lbl_panchayath".tr,
+                          style: theme.textTheme.bodyLarge),
                       SizedBox(height: 1.v),
                       CustomTextFormField(
-                          controller: selectpanchayatController,
-                          hintText: "Select Panchayath",
+                          controller: controller.selectpanchayatController,
+                          hintText: "msg_select_panchayath".tr,
                           suffix: Container(
                               margin:
                                   EdgeInsets.fromLTRB(30.h, 12.v, 12.h, 12.v),
@@ -66,11 +60,11 @@ class SelectfacilityactivityScreen extends StatelessWidget {
                                   svgPath: ImageConstant.imgArrowdropdown)),
                           suffixConstraints: BoxConstraints(maxHeight: 48.v)),
                       SizedBox(height: 26.v),
-                      Text("Village", style: theme.textTheme.bodyLarge),
+                      Text("lbl_village".tr, style: theme.textTheme.bodyLarge),
                       SizedBox(height: 1.v),
                       CustomTextFormField(
-                          controller: selectvillageController,
-                          hintText: "Select Village",
+                          controller: controller.selectvillageController,
+                          hintText: "lbl_select_village".tr,
                           textInputAction: TextInputAction.done,
                           suffix: Container(
                               margin:
@@ -80,15 +74,15 @@ class SelectfacilityactivityScreen extends StatelessWidget {
                           suffixConstraints: BoxConstraints(maxHeight: 48.v)),
                       SizedBox(height: 45.v),
                       CustomElevatedButton(
-                          text: "Finish Setup",
+                          text: "lbl_finish_setup".tr,
                           onTap: () {
-                            onTapFinishsetup(context);
+                            onTapFinishsetup();
                           }),
                       SizedBox(height: 5.v)
                     ]))));
   }
 
-  onTapFinishsetup(BuildContext context) {
+  onTapFinishsetup() {
     // TODO: implement Actions
   }
 }

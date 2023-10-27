@@ -1,7 +1,8 @@
+import 'controller/app_navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:shashankgowdasp_s_application6/core/app_export.dart';
 
-class AppNavigationScreen extends StatelessWidget {
+class AppNavigationScreen extends GetWidget<AppNavigationController> {
   const AppNavigationScreen({Key? key}) : super(key: key);
 
   @override
@@ -20,7 +21,7 @@ class AppNavigationScreen extends StatelessWidget {
                             child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 20.h, vertical: 10.v),
-                                child: Text("App Navigation",
+                                child: Text("lbl_app_navigation".tr,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: theme.colorScheme.primary
@@ -32,8 +33,7 @@ class AppNavigationScreen extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Padding(
                                 padding: EdgeInsets.only(left: 20.h),
-                                child: Text(
-                                    "Check your app's UI from the below demo screens of your app.",
+                                child: Text("msg_check_your_app_s".tr,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: appTheme.blueGray400,
@@ -53,7 +53,7 @@ class AppNavigationScreen extends StatelessWidget {
                               child: Column(children: [
                                 GestureDetector(
                                     onTap: () {
-                                      onTapSplashActivity(context);
+                                      onTapSplashActivity();
                                     },
                                     child: Container(
                                         decoration: AppDecoration.fillWhiteA,
@@ -64,7 +64,8 @@ class AppNavigationScreen extends StatelessWidget {
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: 20.h,
                                                       vertical: 10.v),
-                                                  child: Text("SplashActivity",
+                                                  child: Text(
+                                                      "lbl_splashactivity".tr,
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
@@ -84,7 +85,7 @@ class AppNavigationScreen extends StatelessWidget {
                                         ]))),
                                 GestureDetector(
                                     onTap: () {
-                                      onTapSplashActivityOne(context);
+                                      onTapSplashActivityOne();
                                     },
                                     child: Container(
                                         decoration: AppDecoration.fillWhiteA,
@@ -96,7 +97,8 @@ class AppNavigationScreen extends StatelessWidget {
                                                       horizontal: 20.h,
                                                       vertical: 10.v),
                                                   child: Text(
-                                                      "SplashActivity One",
+                                                      "msg_splashactivity_one"
+                                                          .tr,
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
@@ -116,7 +118,7 @@ class AppNavigationScreen extends StatelessWidget {
                                         ]))),
                                 GestureDetector(
                                     onTap: () {
-                                      onTapSelectFacilityActivity(context);
+                                      onTapSelectFacilityActivity();
                                     },
                                     child: Container(
                                         decoration: AppDecoration.fillWhiteA,
@@ -128,7 +130,8 @@ class AppNavigationScreen extends StatelessWidget {
                                                       horizontal: 20.h,
                                                       vertical: 10.v),
                                                   child: Text(
-                                                      "SelectFacilityActivity",
+                                                      "msg_selectfacilityactivity"
+                                                          .tr,
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: TextStyle(
@@ -151,29 +154,32 @@ class AppNavigationScreen extends StatelessWidget {
   }
 
   /// Navigates to the splashactivityScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the splashactivityScreen.
-  onTapSplashActivity(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.splashactivityScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the splashactivityScreen.
+  onTapSplashActivity() {
+    Get.toNamed(
+      AppRoutes.splashactivityScreen,
+    );
   }
 
   /// Navigates to the splashactivityOneScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the splashactivityOneScreen.
-  onTapSplashActivityOne(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.splashactivityOneScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the splashactivityOneScreen.
+  onTapSplashActivityOne() {
+    Get.toNamed(
+      AppRoutes.splashactivityOneScreen,
+    );
   }
 
   /// Navigates to the selectfacilityactivityScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the selectfacilityactivityScreen.
-  onTapSelectFacilityActivity(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.selectfacilityactivityScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the selectfacilityactivityScreen.
+  onTapSelectFacilityActivity() {
+    Get.toNamed(
+      AppRoutes.selectfacilityactivityScreen,
+    );
   }
 }

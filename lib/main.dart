@@ -1,29 +1,33 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:shashankgowdasp_s_application6/theme/theme_helper.dart';
-import 'package:shashankgowdasp_s_application6/routes/app_routes.dart';
+
+import 'core/app_export.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]);
-
-  ///Please update theme as per your need if required.
-  ThemeHelper().changeTheme('primary');
-  runApp(MyApp());
+  ]).then((value) {
+    Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: theme,
-      title: 'shashankgowdasp_s_application6',
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.splashactivityScreen,
-      routes: AppRoutes.routes,
+      theme: theme,
+      translations: AppLocalization(),
+      locale: Get.deviceLocale, //for setting localization strings
+      fallbackLocale: Locale('en', 'US'),
+      title: 'shashankgowdasp_s_application6',
+      initialBinding: InitialBindings(),
+      initialRoute: AppRoutes.initialRoute,
+      getPages: AppRoutes.pages,
     );
   }
 }

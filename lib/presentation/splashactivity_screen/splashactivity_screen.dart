@@ -1,18 +1,12 @@
+import 'controller/splashactivity_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:shashankgowdasp_s_application6/core/app_export.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_elevated_button.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_outlined_button.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
-class SplashactivityScreen extends StatelessWidget {
-  SplashactivityScreen({Key? key}) : super(key: key);
-
-  TextEditingController phonenumberoneController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
-
-  TextEditingController selectroleoneController = TextEditingController();
+class SplashactivityScreen extends GetWidget<SplashactivityController> {
+  const SplashactivityScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +24,10 @@ class SplashactivityScreen extends StatelessWidget {
                       RichText(
                           text: TextSpan(children: [
                             TextSpan(
-                                text: "Welcome to ",
+                                text: "lbl_welcome_to".tr,
                                 style: CustomTextStyles.headlineSmallPrimary_1),
                             TextSpan(
-                                text: "Saheli App",
+                                text: "lbl_saheli_app".tr,
                                 style: CustomTextStyles
                                     .headlineSmallOnPrimaryContainer_1)
                           ]),
@@ -41,29 +35,29 @@ class SplashactivityScreen extends StatelessWidget {
                       Container(
                           width: 212.h,
                           margin: EdgeInsets.only(top: 2.v, right: 67.h),
-                          child: Text(
-                              "Please proceed with the sign-up process to create your account.",
+                          child: Text("msg_please_proceed_with".tr,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: CustomTextStyles.bodyLargePrimary)),
                       SizedBox(height: 15.v),
-                      Text("Mobile", style: theme.textTheme.bodyLarge),
+                      Text("lbl_mobile".tr, style: theme.textTheme.bodyLarge),
                       SizedBox(height: 3.v),
                       CustomTextFormField(
-                          controller: phonenumberoneController,
-                          hintText: "+91",
+                          controller: controller.phonenumberoneController,
+                          hintText: "lbl_91".tr,
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 14.h, vertical: 13.v)),
                       SizedBox(height: 24.v),
-                      Text("Password", style: theme.textTheme.bodyLarge),
-                      SizedBox(height: 3.v),
-                      CustomTextFormField(controller: passwordController),
-                      SizedBox(height: 24.v),
-                      Text("Role", style: theme.textTheme.bodyLarge),
+                      Text("lbl_password".tr, style: theme.textTheme.bodyLarge),
                       SizedBox(height: 3.v),
                       CustomTextFormField(
-                          controller: selectroleoneController,
-                          hintText: "Select Role",
+                          controller: controller.passwordController),
+                      SizedBox(height: 24.v),
+                      Text("lbl_role".tr, style: theme.textTheme.bodyLarge),
+                      SizedBox(height: 3.v),
+                      CustomTextFormField(
+                          controller: controller.selectroleoneController,
+                          hintText: "lbl_select_role".tr,
                           textInputAction: TextInputAction.done,
                           suffix: Container(
                               margin:
@@ -73,11 +67,11 @@ class SplashactivityScreen extends StatelessWidget {
                           suffixConstraints: BoxConstraints(maxHeight: 48.v)),
                       SizedBox(height: 25.v),
                       CustomElevatedButton(
-                          text: "Sign up",
+                          text: "lbl_sign_up".tr,
                           buttonStyle: CustomButtonStyles.outlinePrimary),
                       GestureDetector(
                           onTap: () {
-                            onTapTxtIfyoualreadyhave(context);
+                            onTapTxtIfyoualreadyhave();
                           },
                           child: Container(
                               width: 231.h,
@@ -85,11 +79,10 @@ class SplashactivityScreen extends StatelessWidget {
                               child: RichText(
                                   text: TextSpan(children: [
                                     TextSpan(
-                                        text:
-                                            "If you already have an account, please ",
+                                        text: "msg_if_you_already_have2".tr,
                                         style: CustomTextStyles.bodyLarge18_1),
                                     TextSpan(
-                                        text: "login here.",
+                                        text: "lbl_login_here".tr,
                                         style: theme.textTheme.titleMedium!
                                             .copyWith(
                                                 decoration:
@@ -98,28 +91,30 @@ class SplashactivityScreen extends StatelessWidget {
                                   textAlign: TextAlign.left)))
                     ])),
             bottomNavigationBar: CustomOutlinedButton(
-                text: "Login",
+                text: "lbl_login".tr,
                 margin: EdgeInsets.only(left: 39.h, right: 43.h, bottom: 29.v),
                 onTap: () {
-                  onTapLogin(context);
+                  onTapLogin();
                 })));
   }
 
   /// Navigates to the splashactivityOneScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the splashactivityOneScreen.
-  onTapLogin(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.splashactivityOneScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the splashactivityOneScreen.
+  onTapLogin() {
+    Get.toNamed(
+      AppRoutes.splashactivityOneScreen,
+    );
   }
 
   /// Navigates to the splashactivityOneScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the splashactivityOneScreen.
-  onTapTxtIfyoualreadyhave(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.splashactivityOneScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the splashactivityOneScreen.
+  onTapTxtIfyoualreadyhave() {
+    Get.toNamed(
+      AppRoutes.splashactivityOneScreen,
+    );
   }
 }

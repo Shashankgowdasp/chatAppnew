@@ -1,3 +1,4 @@
+import 'controller/splashactivity_one_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:shashankgowdasp_s_application6/core/app_export.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_checkbox_button.dart';
@@ -5,17 +6,8 @@ import 'package:shashankgowdasp_s_application6/widgets/custom_elevated_button.da
 import 'package:shashankgowdasp_s_application6/widgets/custom_outlined_button.dart';
 import 'package:shashankgowdasp_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
-class SplashactivityOneScreen extends StatelessWidget {
-  SplashactivityOneScreen({Key? key}) : super(key: key);
-
-  TextEditingController mobileprefixController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
-
-  TextEditingController selectrolelabelController = TextEditingController();
-
-  bool tablost = false;
+class SplashactivityOneScreen extends GetWidget<SplashactivityOneController> {
+  const SplashactivityOneScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,33 +23,33 @@ class SplashactivityOneScreen extends StatelessWidget {
                     children: [
                       Padding(
                           padding: EdgeInsets.only(left: 4.h, top: 5.v),
-                          child: Text("Login",
+                          child: Text("lbl_login".tr,
                               style: CustomTextStyles.headlineSmallPrimary)),
                       Padding(
                           padding: EdgeInsets.only(left: 4.h, top: 16.v),
-                          child:
-                              Text("Mobile", style: theme.textTheme.bodyLarge)),
+                          child: Text("lbl_mobile".tr,
+                              style: theme.textTheme.bodyLarge)),
                       CustomTextFormField(
-                          controller: mobileprefixController,
+                          controller: controller.mobileprefixController,
                           margin: EdgeInsets.only(left: 4.h, top: 3.v),
-                          hintText: "+91",
+                          hintText: "lbl_91".tr,
                           contentPadding: EdgeInsets.symmetric(
                               horizontal: 14.h, vertical: 13.v)),
                       Padding(
                           padding: EdgeInsets.only(left: 4.h, top: 23.v),
-                          child: Text("Password",
+                          child: Text("lbl_password".tr,
                               style: theme.textTheme.bodyLarge)),
                       CustomTextFormField(
-                          controller: passwordController,
+                          controller: controller.passwordController,
                           margin: EdgeInsets.only(left: 4.h, top: 3.v)),
                       Padding(
                           padding: EdgeInsets.only(left: 4.h, top: 23.v),
-                          child:
-                              Text("Role", style: theme.textTheme.bodyLarge)),
+                          child: Text("lbl_role".tr,
+                              style: theme.textTheme.bodyLarge)),
                       CustomTextFormField(
-                          controller: selectrolelabelController,
+                          controller: controller.selectrolelabelController,
                           margin: EdgeInsets.only(left: 4.h, top: 3.v),
-                          hintText: "Select Role",
+                          hintText: "lbl_select_role".tr,
                           textInputAction: TextInputAction.done,
                           suffix: Container(
                               margin:
@@ -66,51 +58,53 @@ class SplashactivityOneScreen extends StatelessWidget {
                                   svgPath: ImageConstant.imgArrowdropdown)),
                           suffixConstraints: BoxConstraints(maxHeight: 48.v)),
                       CustomElevatedButton(
-                          text: "Login",
+                          text: "lbl_login".tr,
                           margin: EdgeInsets.only(left: 4.h, top: 28.v),
                           onTap: () {
-                            onTapLogin(context);
+                            onTapLogin();
                           }),
                       Padding(
                           padding: EdgeInsets.only(left: 4.h, top: 28.v),
-                          child: Text("Forgotten Password",
+                          child: Text("msg_forgotten_password".tr,
                               style: CustomTextStyles
                                   .titleMediumOnPrimaryContainer
                                   .copyWith(
                                       decoration: TextDecoration.underline))),
-                      CustomCheckboxButton(
-                          text: "Tab Lost",
-                          value: tablost,
+                      Obx(() => CustomCheckboxButton(
+                          text: "lbl_tab_lost".tr,
+                          value: controller.tablost.value,
                           margin: EdgeInsets.only(left: 4.h, top: 23.v),
                           onChange: (value) {
-                            tablost = value;
-                          })
+                            controller.tablost.value = value;
+                          }))
                     ])),
             bottomNavigationBar: CustomOutlinedButton(
-                text: "Sign up",
+                text: "lbl_sign_up".tr,
                 margin: EdgeInsets.only(left: 41.h, right: 41.h, bottom: 32.v),
                 buttonStyle: CustomButtonStyles.outlineGreenA,
                 buttonTextStyle: CustomTextStyles.headlineSmallGreenA700,
                 onTap: () {
-                  onTapSignup(context);
+                  onTapSignup();
                 })));
   }
 
   /// Navigates to the splashactivityScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the splashactivityScreen.
-  onTapSignup(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.splashactivityScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the splashactivityScreen.
+  onTapSignup() {
+    Get.toNamed(
+      AppRoutes.splashactivityScreen,
+    );
   }
 
   /// Navigates to the selectfacilityactivityScreen when the action is triggered.
-  ///
-  /// The [BuildContext] parameter is used to build the navigation stack.
-  /// When the action is triggered, this function uses the [Navigator] widget
-  /// to push the named route for the selectfacilityactivityScreen.
-  onTapLogin(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.selectfacilityactivityScreen);
+
+  /// When the action is triggered, this function uses the [Get] package to
+  /// push the named route for the selectfacilityactivityScreen.
+  onTapLogin() {
+    Get.toNamed(
+      AppRoutes.selectfacilityactivityScreen,
+    );
   }
 }
